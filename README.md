@@ -1,5 +1,5 @@
 # vim配置
-  自用的简单vim配置
+  自用的简单vim配置  
   安装vundle vim的扩展管理器
   ```
   git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
