@@ -8,9 +8,20 @@ call vundle#begin()
 " Vundle
 Plugin 'gmarik/Vundle.vim'
 
+
+"""""""""""""""""""""""""""""""""""""""""""""
+"              个人配置插件                 "
+"""""""""""""""""""""""""""""""""""""""""""""
+
 " 文件管理
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
+" go 插件
+Plugin 'fatih/vim-go'
+
+"""""""""""""""""""""""""""""""""""""""""""""
+"              插件结束                     "
+"""""""""""""""""""""""""""""""""""""""""""""
 
 call vundle#end()            " 所有插件必须在此行以上添加
 
@@ -20,6 +31,8 @@ filetype plugin indent on    " required
 set nu
 set encoding=utf-8
 set autochdir "需要自动改变vim的当前目录为打开的文件所在目录则设置此项
+" 使用单个ctrl+w 替换ctrl+ww
+map <C-w> <C-w>w  
 
 " 代码折叠
 set foldmethod=indent
@@ -28,21 +41,20 @@ nnoremap <space> za
 let g:SimpylFold_docstring_preview=1
 
 " 代码缩进
+au BufNewFile,BufRead *
+\ set tabstop=4 |
+\ set softtabstop=4 |
+\ set shiftwidth=4 |
+\ set expandtab |
+\ set autoindent |
+\ set fileformat=unix |
+\ set list listchars=tab:>-
 au BufNewFile,BufRead *.py
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4 |
-    \ set textwidth=79 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix |
-au BufNewFile,BufRead *.js, *.html, *.css
-    \ set tabstop=2 |
-    \ set softtabstop=2 |
-    \ set shiftwidth=2 |
+\ set colorcolumn=120
+au BufNewFile,BufRead *.go
+\ set nolist
 
-" 支持Virtualenv
-" python with virtualenv support
+" Python支持Virtualenv
 py << EOF
 import os
 import sys
@@ -59,6 +71,30 @@ syntax on
 " 文件浏览
 " 隐藏pyc文件
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+" NERDTree git 扩展
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ "Unknown"   : "?"
+    \ }
+
+" for powerline
+set laststatus=2
+set term=xterm-256color
+set termencoding=utf-8
+set guifont=Ubuntu\ Mono\ derivative\ Powerline:10
+let g:Powerline_symbols = 'fancy'
+
+set cursorline  " 光标横线
+set cursorcolumn  " 光标竖线
+
+
 
 " 新建.py,.sh文件，自动插入文件头
 autocmd BufNewFile *.py,*sh exec ":call SetTitle()"
