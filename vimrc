@@ -20,7 +20,7 @@ Plugin 'kien/ctrlp.vim'
 " git interface
 Plugin 'tpope/vim-fugitive'
 " python sytax checker
-Plugin 'nvie/vim-flake8'
+" Plugin 'nvie/vim-flake8'
 Plugin 'vim-scripts/Pydiction'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'scrooloose/syntastic'
