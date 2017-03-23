@@ -1,39 +1,29 @@
-"vundle
-set nocompatible              " required
-filetype off                  " required
+set nocompatible              " 关闭兼容模式
+filetype off
 
-" set the runtime path to include Vundle and initialize
+" 使用Vundle管理插件
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
+" Vundle
 Plugin 'gmarik/Vundle.vim'
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'dracula/vim'
-" filesystem
+
+" 文件管理
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
-" ctrl+p 搜索文件
-Plugin 'kien/ctrlp.vim'
-" git interface
-Plugin 'tpope/vim-fugitive'
-" python sytax checker
-" Plugin 'nvie/vim-flake8'
-Plugin 'vim-scripts/Pydiction'
-Plugin 'vim-scripts/indentpython.vim'
-" Plugin 'scrooloose/syntastic'
-" go vim plugin
-Plugin 'fatih/vim-go'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
+call vundle#end()            " 所有插件必须在此行以上添加
 
 filetype plugin indent on    " required
 
-" Enable folding
+" 基本配置
+set nu
+set encoding=utf-8
+set autochdir "需要自动改变vim的当前目录为打开的文件所在目录则设置此项
+
+" 代码折叠
 set foldmethod=indent
 set foldlevel=99
-" Enable folding with the spacebar
 nnoremap <space> za
 let g:SimpylFold_docstring_preview=1
 
@@ -51,16 +41,8 @@ au BufNewFile,BufRead *.js, *.html, *.css
     \ set softtabstop=2 |
     \ set shiftwidth=2 |
 
-highlight BadWhitespace ctermbg=red guibg=red
-" Display tabs at the beginning of a line in Python mode as bad.
-au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
-" Make trailing whitespace be flagged as bad.
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-
-set encoding=utf-8
-
 " 支持Virtualenv
-"python with virtualenv support
+" python with virtualenv support
 py << EOF
 import os
 import sys
@@ -74,24 +56,9 @@ EOF
 let python_highlight_all=1
 syntax on
 
-" 配色方案dracula
-
 " 文件浏览
 " 隐藏pyc文件
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
-
-set nu
-
-set clipboard=unnamed
-
-" 匹配括号
-set showmatch
-" 搜索高亮显示
-set hlsearch
-" 使用单个ctrl+w 替换ctrl+ww
-map <C-w> <C-w>w
-"记住上次编辑的位置
-au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
 " 新建.py,.sh文件，自动插入文件头
 autocmd BufNewFile *.py,*sh exec ":call SetTitle()"
