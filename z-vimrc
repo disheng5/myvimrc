@@ -58,6 +58,7 @@ autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " 配色配置
+color molokai
 let g:molokai_original = 1
 let g:rehash256 = 1
 
@@ -84,8 +85,6 @@ au BufNewFile,BufRead *
 \ set autoindent |
 \ set fileformat=unix |
 \ set list listchars=tab:>-
-au BufNewFile,BufRead *.py
-\ set colorcolumn=120
 au BufNewFile,BufRead *.go
 \ set nolist
 
