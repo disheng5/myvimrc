@@ -26,6 +26,13 @@ call vundle#end()            " 所有插件必须在此行以上添加
 
 filetype plugin indent on    " required
 
+" nerdtree 设置
+let g:NERDTreeDirArrows = 1
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+let g:NERDTreeGlyphReadOnly = "RO"
+
+
 " 基本配置
 set nu
 set encoding=utf-8
