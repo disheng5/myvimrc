@@ -1,6 +1,9 @@
 set nocompatible              " 关闭兼容模式
 filetype off
 
+" 定义快捷键的前缀，即<Leader>
+let mapleader = "\<Space>"
+
 " 使用Vundle管理插件
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -17,6 +20,9 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 " go 插件
 Plugin 'fatih/vim-go'
+" 配色插件violet
+Plugin 'ashfinal/vim-colors-violet'
+
 
 """""""""""""""""""""""""""""""""""""""""""""
 "              插件结束                     "
@@ -26,19 +32,52 @@ call vundle#end()            " 所有插件必须在此行以上添加
 
 filetype plugin indent on    " required
 
-" nerdtree 设置
+" NERDTree 设置
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 let g:NERDTreeGlyphReadOnly = "RO"
+" 文件浏览
+" 隐藏pyc文件
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+" NERDTree git 扩展
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ "Unknown"   : "?"
+    \ }
+" F3打开关闭nerdtree
+map <F3> :NERDTreeToggle<CR>
+imap <F3> <ESC> :NERDTreeToggle<CR>
+" 当打开vim且没有文件时自动打开NERDTree
+autocmd vimenter * if !argc() | NERDTree | endif
+" 只剩 NERDTree时自动关闭
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+" 配色配置
+colorscheme violet
+nnoremap <silent> <Leader>b :call ToggleBackground()<CR>
+function! ToggleBackground()
+    if &background == "light"
+        set background=dark
+    else
+        set background=light
+    endif
+endfunction
 
 " 基本配置
 set nu
 set encoding=utf-8
-set autochdir "需要自动改变vim的当前目录为打开的文件所在目录则设置此项
+set autochdir " 需要自动改变vim的当前目录为打开的文件所在目录则设置此项
+set ignorecase  " 忽略规则表达式的大小写
 " 使用单个ctrl+w 替换ctrl+ww
-map <C-w> <C-w>w  
+map <C-w> <C-w>w
 
 " 代码折叠
 set foldmethod=indent
@@ -73,22 +112,6 @@ EOF
 " 语法检查/高亮
 let python_highlight_all=1
 syntax on
-
-" 文件浏览
-" 隐藏pyc文件
-let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
-" NERDTree git 扩展
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ "Unknown"   : "?"
-    \ }
 
 set cursorline  " 光标横线
 
