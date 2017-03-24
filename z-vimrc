@@ -20,9 +20,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 " go 插件
 Plugin 'fatih/vim-go'
-" 配色插件violet
-Plugin 'ashfinal/vim-colors-violet'
-
 
 """""""""""""""""""""""""""""""""""""""""""""
 "              插件结束                     "
@@ -61,15 +58,8 @@ autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " 配色配置
-colorscheme violet
-nnoremap <silent> <Leader>b :call ToggleBackground()<CR>
-function! ToggleBackground()
-    if &background == "light"
-        set background=dark
-    else
-        set background=light
-    endif
-endfunction
+let g:molokai_original = 1
+let g:rehash256 = 1
 
 " 基本配置
 set nu
