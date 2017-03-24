@@ -8,7 +8,6 @@ call vundle#begin()
 " Vundle
 Plugin 'gmarik/Vundle.vim'
 
-
 """""""""""""""""""""""""""""""""""""""""""""
 "              个人配置插件                 "
 """""""""""""""""""""""""""""""""""""""""""""
@@ -83,13 +82,6 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Clean"     : "✔︎",
     \ "Unknown"   : "?"
     \ }
-
-" for powerline
-set laststatus=2
-set term=xterm-256color
-set termencoding=utf-8
-set guifont=Ubuntu\ Mono\ derivative\ Powerline:10
-let g:Powerline_symbols = 'fancy'
 
 set cursorline  " 光标横线
 
