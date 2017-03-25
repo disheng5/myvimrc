@@ -68,6 +68,7 @@ set nu
 set encoding=utf-8
 set autochdir " 需要自动改变vim的当前目录为打开的文件所在目录则设置此项
 set ignorecase  " 忽略规则表达式的大小写
+set hlsearch  " 搜索高亮
 " 使用单个ctrl+w 替换ctrl+ww
 map <C-w> <C-w>w
 
