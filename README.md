@@ -13,4 +13,4 @@
   :PluginInstall
   ```
   自动下载所有插件，并进行安装和更新  
-  - 主题使用[dracula](https://draculatheme.com/vim/)
+  - 主题使用[molokai](https://github.com/tomasr/molokai.git)
