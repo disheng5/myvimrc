@@ -35,8 +35,8 @@ let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 let g:NERDTreeGlyphReadOnly = "RO"
 " 文件浏览
-" 隐藏pyc文件
-let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+" 忽略pyc等临时文件
+let NERDTreeIgnore=['\.pyc$', '\~$', '\.swp$', '\.git$']
 " NERDTree git 扩展
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
