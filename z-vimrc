@@ -20,6 +20,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 " go 插件
 Plugin 'fatih/vim-go'
+" 自动补全插件
+Plugin 'Valloric/YouCompleteMe'
 
 """""""""""""""""""""""""""""""""""""""""""""
 "              插件结束                     "
@@ -35,8 +37,8 @@ let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 let g:NERDTreeGlyphReadOnly = "RO"
 " 文件浏览
-" 忽略pyc等临时文件
-let NERDTreeIgnore=['\.pyc$', '\~$', '\.swp$', '\.git$']
+" 隐藏pyc文件
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 " NERDTree git 扩展
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
@@ -77,6 +79,9 @@ set foldmethod=indent
 set foldlevel=99
 nnoremap <space> za
 let g:SimpylFold_docstring_preview=1
+
+" 解决插入模式下delete/backspce键失效问题
+set backspace=2
 
 " 代码缩进
 au BufNewFile,BufRead *
