@@ -22,6 +22,8 @@ Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'fatih/vim-go'
 " 自动补全插件
 Plugin 'Valloric/YouCompleteMe'
+" git插件
+Plugin 'tpope/vim-fugitive'
 
 """""""""""""""""""""""""""""""""""""""""""""
 "              插件结束                     "
@@ -73,6 +75,14 @@ set ignorecase  " 忽略规则表达式的大小写
 set hlsearch  " 搜索高亮
 " 使用单个ctrl+w 替换ctrl+ww
 map <C-w> <C-w>w
+
+" 自动补全配置
+" 回车即选中当前项
+inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
+" 在注释输入中也能补全
+let g:ycm_complete_in_comments = 1
+" 跳转到定义处
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " 代码折叠
 set foldmethod=indent
