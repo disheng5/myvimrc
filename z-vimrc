@@ -105,6 +105,12 @@ au BufNewFile,BufRead *
 \ set list listchars=tab:>-
 au BufNewFile,BufRead *.go
 \ set nolist
+au BufNewFile,BufRead *.html
+\ set tabstop=2 |
+\ set shiftwidth=2
+
+" 格式整理
+nnoremap <leader>f gg=G
 
 " Python支持Virtualenv
 py << EOF
