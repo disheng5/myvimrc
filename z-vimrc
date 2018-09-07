@@ -24,6 +24,8 @@ Plugin 'fatih/vim-go'
 Plugin 'Valloric/YouCompleteMe'
 " git插件
 Plugin 'tpope/vim-fugitive'
+" 代码格式化
+Plugin 'Chiel92/vim-autoformat'
 
 """""""""""""""""""""""""""""""""""""""""""""
 "              插件结束                     "
@@ -76,6 +78,7 @@ set hlsearch  " 搜索高亮
 set noswapfile  " 忽略swap文件
 " 使用单个ctrl+w 替换ctrl+ww
 map <C-w> <C-w>w
+nnoremap K a<CR><Esc>
 
 " 自动补全配置
 " 回车即选中当前项
@@ -111,6 +114,7 @@ au BufNewFile,BufRead *.html
 
 " 格式整理
 nnoremap <leader>f gg=G
+map <F3> :Autoformat<CR>
 
 " Python支持Virtualenv
 py << EOF
@@ -145,7 +149,7 @@ func SetTitle()
         call append(line(".")+5, "")
         call append(line(".")+6, "please add description for this module")
         call append(line(".")+7, "")
-        call append(line(".")+8, ":copyright: (c) 2017 zhangyue")
+        call append(line(".")+8, ":copyright:")
         call append(line(".")+9, ":authors: zengduju")
         call append(line(".")+10, ":version: 1.0 of ".strftime("%F"))
         call append(line(".")+11, "")
@@ -162,7 +166,7 @@ func SetTitle()
         call append(line(".")+3, "")
         call append(line(".")+4, "\# :authors: zengduju")
         call append(line(".")+5, "\# :version: 1.0 of ".strftime("%F"))
-        call append(line(".")+6, "\# :copyright: (c) 2017 zhangyue")
+        call append(line(".")+6, "\# :copyright:")
         call append(line(".")+7, "")
         call append(line(".")+8, "")
         call append(line(".")+9, "")
